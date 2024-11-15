@@ -3,13 +3,13 @@ import { User, UserRepository } from "../user_repository";
 const mockUsers = [
   {
     id: 1,
-    name: "mock user 1 please connect read db",
+    name: "mock user 1 please connect a real db",
     email: "mock1@hotmail.com",
     age: 99,
   },
   {
     id: 2,
-    name: "mock user 2 please connect read db",
+    name: "mock user 2 please connect a real db",
     email: "mock2@hotmail.com",
     age: 99,
   },
