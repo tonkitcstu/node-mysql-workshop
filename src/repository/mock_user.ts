@@ -22,11 +22,15 @@ export class MockUserRepository implements UserRepository {
     this.users = mockUsers;
   }
 
-  findOne(id: number): User | undefined {
-    return this.users.find((u) => u.id === id);
+  findOne(id: number): Promise<User | undefined> {
+    return new Promise((resolve, reject) => {
+      resolve(this.users.find((u) => u.id === id));
+    });
   }
 
-  findAll(): User[] {
-    return this.users;
+  findAll(): Promise<User[]> {
+    return new Promise((resolve, reject) => {
+      resolve(this.users);
+    });
   }
 }

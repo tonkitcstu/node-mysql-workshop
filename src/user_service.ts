@@ -7,11 +7,15 @@ export class UserService {
     this.userRepository = userRepository;
   }
 
-  findUserByID(id: number): User | undefined {
-    return this.userRepository.findOne(id);
+  async findUserByID(id: number): Promise<User | undefined> {
+    try {
+      return this.userRepository.findOne(id);
+    } catch (err) {
+      return;
+    }
   }
 
-  findAllUser(): User[] {
+  async findAllUser(): Promise<User[]> {
     return this.userRepository.findAll();
   }
 }

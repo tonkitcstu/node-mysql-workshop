@@ -6,6 +6,6 @@ export interface User {
 }
 
 export interface UserRepository {
-  findOne(id: number): User | undefined;
-  findAll(): User[];
+  findOne(id: number): Promise<User | undefined>;
+  findAll(): Promise<User[]>;
 }

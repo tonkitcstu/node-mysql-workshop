@@ -4,9 +4,9 @@ import { UserService } from "../user_service";
 export const createUserRouter = (service: UserService) => {
   const router = express.Router();
 
-  router.get("/:id", (req: Request, res: Response) => {
+  router.get("/:id", async (req: Request, res: Response) => {
     const id = parseInt(req.params.id);
-    const user = service.findUserByID(id);
+    const user = await service.findUserByID(id);
 
     if (user) {
       res.json(user);
@@ -15,9 +15,8 @@ export const createUserRouter = (service: UserService) => {
     }
   });
 
-  router.get("/", (req: Request, res: Response) => {
-    const user = service.findAllUser();
-
+  router.get("/", async (req: Request, res: Response) => {
+    const user = await service.findAllUser();
     if (user) {
       res.json(user);
     } else {
