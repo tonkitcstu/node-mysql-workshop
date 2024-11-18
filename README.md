@@ -52,7 +52,7 @@ Once you have finished, go run this command
 Then run `npm run dev` again
 ## Approach #1: Running MySQL in the same docker container as the Node.js Web server
 
-**NOTE**: If you want to run & test this approch go ahead to this # and skip section below.
+**NOTE**: If you want to run & test this approch go ahead to this [run approach #1](https://github.com/tonkitcstu/node-mysql-workshop#run-approach-1) and skip section below.
 
 ### Let's talk
 
