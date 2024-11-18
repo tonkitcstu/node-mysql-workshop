@@ -50,6 +50,8 @@ Once you have finished, go run this command
 ```
 
 Then run `npm run dev` again
+
+
 ## Approach #1: Running MySQL in the same docker container as the Node.js Web server
 
 **NOTE**: If you want to run & test this approach go ahead to [run approach #1](https://github.com/tonkitcstu/node-mysql-workshop#run-approach-1) and skip the section below. 
@@ -197,6 +199,86 @@ The result should be the same as follow:
   }
 ]
 ```
+
+## Approach #3: Running MySQL in another Docker container
+
+Well, this approach, you can actuall either manually run both MySQL and Node.js application or you can use a tool called `docker compose`.
+
+In this example, I will be using `docker compose` since I suppose that you guys able to manually run the container yourself.
+
+**NOTE**: To test this example you will need to install `docker compose` on your machine.
+
+### Run approach #2
+
+Ensure you are in root of project directory.
+
+For example, when your output from `ls` command should look similar to below.
+
+```bash
+Dockerfile  docker-compose-approach  package.json    src
+README.md   node_modules             scripts         tsconfig.json
+package-lock.json        shame-approach
+```
+
+Create `.env` file on the root of project directory
+
+```bash
+HOST=0.0.0.0
+PORT=3000
+DATABASE_HOST=0.0.0.0
+DATABASE_PORT=3306 
+DATABASE_USER=root
+DATABASE_PASSWORD=12345
+DATABASE_NAME=my_database
+```
+
+Go run this following command:
+```bash
+docker compose -f docker-compose-approach/docker-compose.yml  -p node-mysql-compose --env-file .env up
+```
+
+Open another terminal to test APIs of the server.
+
+```bash
+curl localhost:3000/users
+```
+
+The result should be the same as follow:
+```json
+[
+  {
+    "id": 1,
+    "name": "John Doe",
+    "email": "john.doe@example.com",
+    "age": 35
+  },
+  {
+    "id": 2,
+    "name": "Jane Smith",
+    "email": "jane.smith@example.com",
+    "age": 28
+  }
+]
+```
+
+Or try this `curl`
+
+```bash
+curl localhost:3000/users/1
+```
+
+The result should be the same as follow:
+```json
+[
+  {
+    "id": 1,
+    "name": "John Doe",
+    "email": "john.doe@example.com",
+    "age": 35
+  }
+]
+```
+
 
 ## Tech Stack
 
