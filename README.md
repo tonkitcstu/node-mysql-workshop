@@ -76,7 +76,7 @@ You can found it in this link: https://hub.docker.com/_/debian
 
 With this base image I can install MySQL and Node.js to it and create a new image by these following steps:
 
-First, I went inside a container create from the image.
+**Second**, I went inside a container create from the image.
 
 ```bash
 docker run -it debian:12 bash
@@ -95,7 +95,7 @@ softwares to install MySQL and Node.js.
 I'm not going to show them here since it a pretty hard and cumbersome stuffs.
 Let's pretend I have finished the installation and got MySQL and Node.js on my container.
 
-Docker provides a special feature where you can save the container to a new image.
+**Finally**, Docker provides a special feature where you can save the container to a new image.
 So I went save the container by this command:
 
 ```bash
