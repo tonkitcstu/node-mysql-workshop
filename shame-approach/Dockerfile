@@ -4,7 +4,7 @@ FROM base AS deps
 
 WORKDIR /app
 
-COPY package.json yarn.lock* package-lock.json* pnpm-lock.yaml* ./
+COPY ../package.json ../yarn.lock* ../package-lock.json* ../pnpm-lock.yaml* ./
 RUN \
   if [ -f yarn.lock ]; then yarn --frozen-lockfile; \
   elif [ -f package-lock.json ]; then npm ci; \
@@ -17,7 +17,7 @@ FROM base AS builder
 WORKDIR /app
 
 COPY --from=deps /app/node_modules ./node_modules
-COPY . .
+COPY ../ .
 
 RUN \
   if [ -f yarn.lock ]; then yarn run build; \
@@ -31,10 +31,10 @@ FROM yootna/node-mysql:debian AS runner
 WORKDIR /app
 
 
+COPY --from=builder /app/shame-approach/entrypoint.sh ./entrypoint.sh
 COPY --from=builder /app/dist ./dist
 COPY --from=builder /app/package.json ./package.json
 COPY --from=builder /app/node_modules ./node_modules
-COPY --from=builder /app/entrypoint.sh ./entrypoint.sh
 COPY --from=builder /app/seed.sql ./seed.sql
 
 EXPOSE 3000
@@ -43,5 +43,3 @@ ENV PORT 3000
 ENV HOST "0.0.0.0"
 
 ENTRYPOINT ["./entrypoint.sh"]
-
-
