@@ -9,13 +9,21 @@ export class UserService {
 
   async findUserByID(id: number): Promise<User | undefined> {
     try {
-      return this.userRepository.findOne(id);
+      const user = await this.userRepository.findOne(id);
+      return user;
     } catch (err) {
+      console.log(err);
       return;
     }
   }
 
   async findAllUser(): Promise<User[]> {
-    return this.userRepository.findAll();
+    let users: User[] = [];
+    try {
+      users = await this.userRepository.findAll();
+    } catch (err) {
+      console.log(err);
+    }
+    return users;
   }
 }

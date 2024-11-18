@@ -15,10 +15,13 @@ export class MySQLUserRepository implements UserRepository {
         function (err, results, fields) {
           if (err) {
             reject(err);
+            return;
           }
 
           if (Object.keys(results).length == 0) {
-            reject(new Error("empty result"));
+            const err = new Error("Empty results");
+            reject(err);
+            return;
           }
 
           const user: User = {
@@ -45,6 +48,7 @@ export class MySQLUserRepository implements UserRepository {
           if (Object.keys(results).length == 0) {
             reject(new Error("empty result"));
           }
+
           let users: User[] = [];
           for (let i = 0; i < Object.keys(results).length; i++) {
             users.push({
