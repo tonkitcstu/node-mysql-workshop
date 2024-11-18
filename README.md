@@ -66,7 +66,7 @@ Theoretically, you can do it if you want to, but at least please stop for once a
 
 Okay, I'm going to stop whining now. 
 
-The below sections are my journey on makeing this work. **I don't recommend you guys to follow me to hell**, but just read and try to understand how can I did it, so you can get the idea. I think that's enough.
+The below sections are my journey in making this work. **I don't recommend you guys to follow me to hell**, but just read and try to understand how can I did it, so you can get the idea. I think that's enough.
 
 **First**, you will need a base container that mimic an operating system, allow you to set up required software stack without much effort.
 
