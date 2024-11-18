@@ -208,7 +208,7 @@ In this example, I will be using `docker compose` since I suppose that you guys 
 
 **NOTE**: To test this example you will need to install `docker compose` on your machine.
 
-### Run approach #2
+### Run approach #3
 
 Ensure you are in root of project directory.
 
