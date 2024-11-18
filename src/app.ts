@@ -42,6 +42,7 @@ async function main() {
           } else if (retries === 0) {
             reject(new Error("Unable to connect to MySQL"));
           } else {
+            console.log(err.message);
             const retryTime = maxRetry - retries + 1;
             console.log(`Retry: ${retryTime}, Max retry: ${maxRetry}`);
             retries--;

@@ -35,7 +35,7 @@ COPY --from=builder /app/shame-approach/entrypoint.sh ./entrypoint.sh
 COPY --from=builder /app/dist ./dist
 COPY --from=builder /app/package.json ./package.json
 COPY --from=builder /app/node_modules ./node_modules
-COPY --from=builder /app/seed.sql ./seed.sql
+COPY --from=builder /app/scripts/seed.sql ./seed.sql
 
 EXPOSE 3000
 
